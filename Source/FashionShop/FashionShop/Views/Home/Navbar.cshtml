@@ -1,0 +1,92 @@
+﻿@model  IEnumerable<FashionShop.Models.categoryFrist>
+@using FashionShop.Models
+@{
+    Layout = null;
+    var accounts = new account();
+    if (Session["account"] != null)
+    {
+        accounts = (account)Session["account"];
+    }
+
+}
+<nav class="navbar navbar-expand-sm navbar-light">
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">NGUYỄN THUÝ</a>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <div class="justify-content-between statusLoginMobile">
+            <b>Xin chào: @($"{accounts.hoTen??"Khách"}")</b>
+            @if (!string.IsNullOrEmpty(accounts.email))
+            {
+
+
+                <a style="color:#333" href="~/logout">Đăng xuất</a>
+
+            }
+            else
+            {
+                <a style="color:#333" href="~/logout">Đăng nhập</a>
+            }
+        </div>
+        <ul class="navbar-nav mr-auto m-auto">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Trang chủ <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sản phẩm
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @foreach (var item in Model)
+                    {
+                        var itemSecond = item.categorySeconds;
+                        if (itemSecond.Count > 0)
+                        {
+                            <li class="dropright">
+                                <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">
+                                    @item.CategoryName
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/@item.alias">
+                                        <b> Xem tất cả @item.CategoryName</b>
+                                    </a>
+                                    <hr />
+                                    @foreach (var item2 in itemSecond)
+                                    {
+                                        <a class="dropdown-item" href="@($"/{item.alias}/{item2.alias}")">
+                                            @item2.CategoryName
+                                        </a>
+                                    }
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li><a class="dropdown-item" href="/@item.alias">@item.CategoryName</a></li>
+                        }
+
+                    }
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gioi-thieu">Giới thiệu</a>
+            </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0 formSearch" action="~/search">
+            <input class="form-control mr-sm-2 inputSearch" name="tukhoa" type="text" placeholder="Search">
+            <button class="btnSearch"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+    <div class="nav-right d-flex">
+
+        @*<button class="btnSearch-mobile"><i class="fa-solid fa-magnifying-glass"></i></button>*@
+        <a href="#" class="btnCart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>0</span>
+        </a>
+    </div>
+</nav>

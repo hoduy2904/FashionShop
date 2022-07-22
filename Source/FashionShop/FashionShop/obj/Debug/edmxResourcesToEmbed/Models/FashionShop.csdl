@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fashionshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="banner">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="imgsrc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="infomationAccount">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AddressAccount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="account" Relationship="fashionshopModel.FK_INFO_Account" FromRole="infomationAccount" ToRole="account" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="productID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="numberProduct" Type="Int32" />
+    <Property Name="price" Type="Double" />
+    <Property Name="size" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_OrdersDetail_Order" FromRole="OrderDetail" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="isVerified" Type="Boolean" />
+    <Property Name="timecreate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrdersDetail_Order" FromRole="Orders" ToRole="OrderDetail" />
+    <NavigationProperty Name="account" Relationship="fashionshopModel.FK_Orders_Users" FromRole="Order" ToRole="account" />
+  </EntityType>
+  <EntityType Name="productSize">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sizeName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="productID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="fashionshopModel.FK_PSize_P" FromRole="productSize" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="subImage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="imgsrc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="productID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="fashionshopModel.FK_SubI_products" FromRole="subImage" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_OrdersDetail_Order">
+    <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="fashionshopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="banners" EntityType="Self.banner" />
+    <EntitySet Name="infomationAccounts" EntityType="Self.infomationAccount" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="productSizes" EntityType="Self.productSize" />
+    <EntitySet Name="subImages" EntityType="Self.subImage" />
+    <AssociationSet Name="FK_OrdersDetail_Order" Association="Self.FK_OrdersDetail_Order">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <EntitySet Name="formpages" EntityType="fashionshopModel.formpage" />
+    <EntitySet Name="carts" EntityType="fashionshopModel.cart" />
+    <EntitySet Name="categoryFrists" EntityType="fashionshopModel.categoryFrist" />
+    <EntitySet Name="categorySeconds" EntityType="fashionshopModel.categorySecond" />
+    <EntitySet Name="Products" EntityType="fashionshopModel.Product" />
+    <AssociationSet Name="FK_Carts_Products" Association="fashionshopModel.FK_Carts_Products">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="cart" EntitySet="carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTSC_CTF" Association="fashionshopModel.FK_CTSC_CTF">
+      <End Role="categoryFrist" EntitySet="categoryFrists" />
+      <End Role="categorySecond" EntitySet="categorySeconds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_CTSC" Association="fashionshopModel.FK_Product_CTSC">
+      <End Role="categorySecond" EntitySet="categorySeconds" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSize_P" Association="fashionshopModel.FK_PSize_P">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="productSize" EntitySet="productSizes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubI_products" Association="fashionshopModel.FK_SubI_products">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="subImage" EntitySet="subImages" />
+    </AssociationSet>
+    <EntitySet Name="accounts" EntityType="fashionshopModel.account" />
+    <AssociationSet Name="FK_Carts_Users" Association="fashionshopModel.FK_Carts_Users">
+      <End Role="account" EntitySet="accounts" />
+      <End Role="cart" EntitySet="carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INFO_Account" Association="fashionshopModel.FK_INFO_Account">
+      <End Role="account" EntitySet="accounts" />
+      <End Role="infomationAccount" EntitySet="infomationAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Users" Association="fashionshopModel.FK_Orders_Users">
+      <End Role="account" EntitySet="accounts" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="formpage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="alias" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="email" />
+      <PropertyRef Name="productID" />
+    </Key>
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="productID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="numberProduct" Type="Int32" />
+    <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="size" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="fashionshopModel.FK_Carts_Products" FromRole="cart" ToRole="Product" />
+    <NavigationProperty Name="account" Relationship="fashionshopModel.FK_Carts_Users" FromRole="cart" ToRole="account" />
+  </EntityType>
+  <EntityType Name="categoryFrist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="alias" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="categorySeconds" Relationship="fashionshopModel.FK_CTSC_CTF" FromRole="categoryFrist" ToRole="categorySecond" />
+  </EntityType>
+  <EntityType Name="categorySecond">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryFrist" Type="Int32" />
+    <Property Name="alias" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="categoryFrist1" Relationship="fashionshopModel.FK_CTSC_CTF" FromRole="categorySecond" ToRole="categoryFrist" />
+    <NavigationProperty Name="Products" Relationship="fashionshopModel.FK_Product_CTSC" FromRole="categorySecond" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="productID" />
+    </Key>
+    <Property Name="productID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="productName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Double" />
+    <Property Name="priceOld" Type="Double" />
+    <Property Name="categorySecond" Type="Int32" />
+    <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="views" Type="Int32" />
+    <Property Name="alias" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="carts" Relationship="fashionshopModel.FK_Carts_Products" FromRole="Product" ToRole="cart" />
+    <NavigationProperty Name="categorySecond1" Relationship="fashionshopModel.FK_Product_CTSC" FromRole="Product" ToRole="categorySecond" />
+    <NavigationProperty Name="productSizes" Relationship="fashionshopModel.FK_PSize_P" FromRole="Product" ToRole="productSize" />
+    <NavigationProperty Name="subImages" Relationship="fashionshopModel.FK_SubI_products" FromRole="Product" ToRole="subImage" />
+  </EntityType>
+  <Association Name="FK_Carts_Products">
+    <End Type="fashionshopModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="fashionshopModel.cart" Role="cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productID" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="productID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTSC_CTF">
+    <End Type="fashionshopModel.categoryFrist" Role="categoryFrist" Multiplicity="0..1" />
+    <End Type="fashionshopModel.categorySecond" Role="categorySecond" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoryFrist">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="categorySecond">
+        <PropertyRef Name="CategoryFrist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_CTSC">
+    <End Type="fashionshopModel.categorySecond" Role="categorySecond" Multiplicity="0..1" />
+    <End Type="fashionshopModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorySecond">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="categorySecond" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSize_P">
+    <End Type="fashionshopModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="fashionshopModel.productSize" Role="productSize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productID" />
+      </Principal>
+      <Dependent Role="productSize">
+        <PropertyRef Name="productID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubI_products">
+    <End Type="fashionshopModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="fashionshopModel.subImage" Role="subImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productID" />
+      </Principal>
+      <Dependent Role="subImage">
+        <PropertyRef Name="productID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="pwd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="timecreate" Type="DateTime" Precision="3" />
+    <Property Name="identityCard" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="isVerified" Type="Boolean" />
+    <Property Name="isAdmin" Type="Boolean" />
+    <Property Name="hoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="carts" Relationship="fashionshopModel.FK_Carts_Users" FromRole="account" ToRole="cart" />
+    <NavigationProperty Name="infomationAccounts" Relationship="fashionshopModel.FK_INFO_Account" FromRole="account" ToRole="infomationAccount" />
+    <NavigationProperty Name="Orders" Relationship="fashionshopModel.FK_Orders_Users" FromRole="account" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK_Carts_Users">
+    <End Type="fashionshopModel.account" Role="account" Multiplicity="1" />
+    <End Type="fashionshopModel.cart" Role="cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INFO_Account">
+    <End Type="fashionshopModel.account" Role="account" Multiplicity="0..1" />
+    <End Type="fashionshopModel.infomationAccount" Role="infomationAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="infomationAccount">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Users">
+    <End Type="fashionshopModel.account" Role="account" Multiplicity="0..1" />
+    <End Type="fashionshopModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

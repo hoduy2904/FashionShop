@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="fashionshopModelStoreContainer" CdmEntityContainer="fashionshopEntities">
+    <EntitySetMapping Name="banners">
+      <EntityTypeMapping TypeName="fashionshopModel.banner">
+        <MappingFragment StoreEntitySet="banners">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="imgsrc" ColumnName="imgsrc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="infomationAccounts">
+      <EntityTypeMapping TypeName="fashionshopModel.infomationAccount">
+        <MappingFragment StoreEntitySet="infomationAccounts">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="AddressAccount" ColumnName="AddressAccount" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="fashionshopModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetail">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="productID" ColumnName="productID" />
+          <ScalarProperty Name="numberProduct" ColumnName="numberProduct" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="size" ColumnName="size" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="fashionshopModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="isVerified" ColumnName="isVerified" />
+          <ScalarProperty Name="timecreate" ColumnName="timecreate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productSizes">
+      <EntityTypeMapping TypeName="fashionshopModel.productSize">
+        <MappingFragment StoreEntitySet="productSize">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="sizeName" ColumnName="sizeName" />
+          <ScalarProperty Name="productID" ColumnName="productID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subImages">
+      <EntityTypeMapping TypeName="fashionshopModel.subImage">
+        <MappingFragment StoreEntitySet="subImages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="imgsrc" ColumnName="imgsrc" />
+          <ScalarProperty Name="productID" ColumnName="productID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="formpages">
+      <EntityTypeMapping TypeName="fashionshopModel.formpage">
+        <MappingFragment StoreEntitySet="formpages">
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="noidung" ColumnName="noidung" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carts">
+      <EntityTypeMapping TypeName="fashionshopModel.cart">
+        <MappingFragment StoreEntitySet="carts">
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="numberProduct" ColumnName="numberProduct" />
+          <ScalarProperty Name="productID" ColumnName="productID" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categoryFrists">
+      <EntityTypeMapping TypeName="fashionshopModel.categoryFrist">
+        <MappingFragment StoreEntitySet="categoryFrist">
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categorySeconds">
+      <EntityTypeMapping TypeName="fashionshopModel.categorySecond">
+        <MappingFragment StoreEntitySet="categorySecond">
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="CategoryFrist" ColumnName="CategoryFrist" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="fashionshopModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="views" ColumnName="views" />
+          <ScalarProperty Name="noidung" ColumnName="noidung" />
+          <ScalarProperty Name="categorySecond" ColumnName="categorySecond" />
+          <ScalarProperty Name="priceOld" ColumnName="priceOld" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="productID" ColumnName="productID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="fashionshopModel.account">
+        <MappingFragment StoreEntitySet="accounts">
+          <ScalarProperty Name="hoTen" ColumnName="hoTen" />
+          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+          <ScalarProperty Name="isVerified" ColumnName="isVerified" />
+          <ScalarProperty Name="identityCard" ColumnName="identityCard" />
+          <ScalarProperty Name="timecreate" ColumnName="timecreate" />
+          <ScalarProperty Name="pwd" ColumnName="pwd" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
