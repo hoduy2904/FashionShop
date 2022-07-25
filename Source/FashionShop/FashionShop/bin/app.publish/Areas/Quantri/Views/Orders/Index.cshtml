@@ -1,0 +1,50 @@
+﻿@model IEnumerable<FashionShop.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="title mb-5">Danh sách đơn hàng</h1>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>Mã hoá đơn</th>
+            <th>Tên khách hàng</th>
+            <th>Địa chỉ</th>
+            <th>Số điện thoại</th>
+            <th>
+                Đã thanh toán
+            </th>
+            <th>Tổng tiền</th>
+            <th>
+                Thời gian
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            var khachhang = item.account;
+            <tr>
+                <td>@item.OrderID</td>
+                <td>@khachhang.hoTen</td>
+                <td>@item.addressOrder</td>
+                <td>@item.phone</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isVerified)
+                </td>
+                <td>@item.OrderDetails.Sum(x => x.price * x.numberProduct)</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.timecreate)
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.OrderID }) |
+                    @Html.ActionLink("Chi tiết đơn hàng", "Details", "OrderDetails", new { id = item.OrderID }) |
+                    @Html.ActionLink("Xoá", "Delete", new { id = item.OrderID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

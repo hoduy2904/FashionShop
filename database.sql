@@ -67,6 +67,7 @@ create table Products
 	priceOld float,
 	categorySecond int,
 	noidung nvarchar(max),
+	size varchar(100) not null,
 	views int,
 	alias varchar(max),
 	constraint FK_Product_CTSC foreign key (categorySecond) references categorySecond(id)
@@ -80,24 +81,15 @@ productID varchar(20),
 constraint FK_SubI_products foreign key (productID) references Products (productID)
 )
 go
-create table productSize
-(
-	id int identity primary key,
-	sizeName nvarchar(20),
-	productID varchar(20),
-	constraint FK_PSize_P foreign key (productID) references Products(productID)
-)
-go
 create table carts
 (
 	email varchar(100) not null,
 	productID varchar(20) not null,
 	numberProduct int,
-	color varchar(50),
 	size varchar(10),
 	constraint FK_Carts_Users foreign key (email) references accounts(email),
 	constraint FK_Carts_Products foreign key (productID) references Products(productID),
-	constraint PK_carts primary key (email, productID)
+	constraint PK_carts primary key (email, productID,size)
 )
 go
 create table Orders
@@ -105,9 +97,12 @@ create table Orders
 	OrderID int identity primary key,
 	email varchar(100),
 	isVerified bit,
+	addressOrder nvarchar(200),
+	phone varchar(11),
 	timecreate datetime,
 	constraint FK_Orders_Users foreign key (email) references accounts(email)
 )
+
 go
 create table OrderDetail
 (
@@ -117,5 +112,6 @@ create table OrderDetail
 	numberProduct int,
 	price float,
 	size varchar(10),
-	constraint FK_OrdersDetail_Order foreign key (OrderID) references Orders(OrderID)
+	constraint FK_OrdersDetail_Order foreign key (OrderID) references Orders(OrderID),
+	constraint FK_OrdersDetail_Product foreign key (productID) references Products(productID)
 )

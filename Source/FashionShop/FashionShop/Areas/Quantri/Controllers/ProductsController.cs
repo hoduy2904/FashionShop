@@ -10,13 +10,14 @@ using FashionShop.Models;
 
 namespace FashionShop.Areas.Quantri.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
         private fashionshopEntities db = new fashionshopEntities();
 
         // GET: Quantri/Products
         public ActionResult Index()
         {
+            ViewBag.categorySecond = new SelectList(db.categorySeconds, "id", "CategoryName");
             var products = db.Products.Include(p => p.categorySecond1);
             return View(products.ToList());
         }
@@ -50,28 +51,20 @@ namespace FashionShop.Areas.Quantri.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "productID,productName,price,priceOld,categorySecond,noidung,views,alias")] Product product,string size, IEnumerable<HttpPostedFileBase> fileUploads)
+        [ValidateInput(false)]
+        public ActionResult Create([Bind(Include = "productID,productName,price,priceOld,size,categorySecond,noidung,views,alias")] Product product, IEnumerable<HttpPostedFileBase> fileUploads)
         {
             string path = Server.MapPath("~/Content/upload/images/");
             if (ModelState.IsValid)
             {
+                product.price =product.price?? 0;
+                product.priceOld = product.price ?? 0;
+                product.views = 0;
+                product.alias = ThuVien.convertToUnSign3(product.productName);
                 db.Products.Add(product);
                 int count=db.SaveChanges();
                 if (count > 0)
                 {
-                    if (!string.IsNullOrEmpty(size))
-                    {
-                        var lstSize = size.Split(',');
-                        foreach (var item in lstSize)
-                        {
-                            db.productSizes.Add(new productSize
-                            {
-                                productID = product.productID,
-                                sizeName = item
-                            });
-                        }
-                        db.SaveChanges();
-                    }
                     if (fileUploads.Count() > 0)
                     {
                         foreach(var file in fileUploads)
@@ -119,11 +112,16 @@ namespace FashionShop.Areas.Quantri.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "productID,productName,price,priceOld,categorySecond,noidung,views,alias")] Product product)
+        [ValidateInput(false)]
+        public ActionResult Edit([Bind(Include = "productID,productName,price,priceOld,size,categorySecond,noidung,views,alias")] Product product)
         {
             if (ModelState.IsValid)
             {
+                product.price = product.price ?? 0;
+                product.priceOld = product.price ?? 0;
+                product.alias=ThuVien.convertToUnSign3(product.productName);
                 db.Entry(product).State = EntityState.Modified;
+                db.Entry(product).Property(x => x.views).IsModified = false;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

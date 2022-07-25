@@ -248,6 +248,33 @@ a:hover{
     transform: rotate(-90deg);
 }
 
+.cart-item{
+    border: 1px solid #cdcdcd;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    
+}
+.btnDelCart{
+    font-size: 20px;
+    position: absolute;
+    left: 10px;
+    top:5px;
+    opacity: 0;
+    outline: none;
+}
+.cart-item:hover .btnDelCart{
+    opacity: 1;
+}
+
+.infomation-cart{
+    font-size: 20px;
+}
+.infomation-pay{
+    height: 100%;
+    top: 5px;
+    position: sticky;
+}
 @media (min-width: 767px) {
     .navbar-nav .dropdown-menu .caret {
         transform: rotate(-90deg);

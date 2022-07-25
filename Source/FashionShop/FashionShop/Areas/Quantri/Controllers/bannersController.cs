@@ -10,7 +10,7 @@ using FashionShop.Models;
 
 namespace FashionShop.Areas.Quantri.Controllers
 {
-    public class bannersController : Controller
+    public class bannersController : BaseController
     {
         private fashionshopEntities db = new fashionshopEntities();
 

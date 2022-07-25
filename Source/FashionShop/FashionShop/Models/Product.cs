@@ -17,9 +17,9 @@ namespace FashionShop.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.carts = new HashSet<cart>();
-            this.productSizes = new HashSet<productSize>();
             this.subImages = new HashSet<subImage>();
+            this.carts = new HashSet<cart>();
+            this.OrderDetails = new HashSet<OrderDetail>();
         }
     
         public string productID { get; set; }
@@ -30,13 +30,14 @@ namespace FashionShop.Models
         public string noidung { get; set; }
         public Nullable<int> views { get; set; }
         public string alias { get; set; }
+        public string size { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cart> carts { get; set; }
         public virtual categorySecond categorySecond1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<productSize> productSizes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<subImage> subImages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cart> carts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

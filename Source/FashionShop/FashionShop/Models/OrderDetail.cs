@@ -22,5 +22,6 @@ namespace FashionShop.Models
         public string size { get; set; }
     
         public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

@@ -17,10 +17,9 @@ namespace FashionShop.Models
         public string email { get; set; }
         public string productID { get; set; }
         public Nullable<int> numberProduct { get; set; }
-        public string color { get; set; }
         public string size { get; set; }
     
-        public virtual Product Product { get; set; }
         public virtual account account { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

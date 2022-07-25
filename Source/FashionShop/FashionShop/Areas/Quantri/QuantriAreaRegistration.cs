@@ -17,7 +17,7 @@ namespace FashionShop.Areas.Quantri
             context.MapRoute(
                 "Quantri_default",
                 "Quantri/{controller}/{action}/{id}",
-                new { action = "Index",controller="Home", id = UrlParameter.Optional },
+                new { controller= "categoryFrists", action = "Index", id = UrlParameter.Optional },
                 new[] { "FashionShop.Areas.Quantri.Controllers" }
             );
         }

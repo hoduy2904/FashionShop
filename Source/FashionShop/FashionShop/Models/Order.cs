@@ -24,9 +24,11 @@ namespace FashionShop.Models
         public string email { get; set; }
         public Nullable<bool> isVerified { get; set; }
         public Nullable<System.DateTime> timecreate { get; set; }
+        public string addressOrder { get; set; }
+        public string phone { get; set; }
     
+        public virtual account account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        public virtual account account { get; set; }
     }
 }

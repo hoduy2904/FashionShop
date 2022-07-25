@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FashionShop.Models.account>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="title mb-5">Quản lý tài khoản</h1>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                Họ tên
+            </th>
+            <th>
+                CMND
+            </th>
+            <th>
+                Thời gian tạo
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.identityCard)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.timecreate)
+                </td>
+                <td>
+                    <a href="~/Quantri/accounts/Edit?id=@item.email">Sửa</a> |
+                    <a href="~/Quantri/accounts/Details?id=@item.email">Xem chi tiết</a> |
+                    <a href="~/Quantri/accounts/Delete?id=@item.email">Xoá</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

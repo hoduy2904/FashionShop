@@ -13,6 +13,27 @@ namespace FashionShop
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+                        routes.MapRoute(
+                name: "FormGeneral",
+                url: "pages/{alias}",
+                defaults: new { controller = "Home", action = "FormGeneral", id = UrlParameter.Optional },
+                new[] { "FashionShop.Controllers" }
+            );
+
+            routes.MapRoute(
+               name: "Cart",
+               url: "giohang/{action}",
+               defaults: new { controller = "Carts", action = "Index", id = UrlParameter.Optional },
+               new[] { "FashionShop.Controllers" }
+           );
+
+            routes.MapRoute(
+               name: "Diachi",
+               url: "profile/diachi/{action}",
+               defaults: new { controller = "infomationAccounts", action = "Index", id = UrlParameter.Optional },
+               new[] { "FashionShop.Controllers" }
+           );
+
             routes.MapRoute(
                name: "Login",
                url: "login",
@@ -38,13 +59,6 @@ namespace FashionShop
                 name: "Search",
                 url: "search",
                 defaults: new { controller = "Home", action = "Search", id = UrlParameter.Optional },
-                new[] { "FashionShop.Controllers" }
-            );
-
-            routes.MapRoute(
-                name: "FormGeneral",
-                url: "danhmuc/{alias}",
-                defaults: new { controller = "Home", action = "FormGeneral", id = UrlParameter.Optional },
                 new[] { "FashionShop.Controllers" }
             );
 

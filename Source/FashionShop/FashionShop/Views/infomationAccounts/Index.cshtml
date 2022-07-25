@@ -1,0 +1,45 @@
+﻿@model IEnumerable<FashionShop.Models.infomationAccount>
+
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Thêm mới", "Create", null, new {@class="btn btn-primary"})
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+               Địa chỉ
+            </th>
+            <th>
+               Số điện thoại
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressAccount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Xoá", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

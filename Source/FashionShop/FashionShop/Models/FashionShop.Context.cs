@@ -27,15 +27,14 @@ namespace FashionShop.Models
     
         public virtual DbSet<banner> banners { get; set; }
         public virtual DbSet<infomationAccount> infomationAccounts { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<productSize> productSizes { get; set; }
         public virtual DbSet<subImage> subImages { get; set; }
         public virtual DbSet<formpage> formpages { get; set; }
-        public virtual DbSet<cart> carts { get; set; }
         public virtual DbSet<categoryFrist> categoryFrists { get; set; }
         public virtual DbSet<categorySecond> categorySeconds { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<account> accounts { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<cart> carts { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }

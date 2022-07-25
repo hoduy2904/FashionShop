@@ -10,7 +10,7 @@ using FashionShop.Models;
 
 namespace FashionShop.Areas.Quantri.Controllers
 {
-    public class categoryFristsController : Controller
+    public class categoryFristsController : BaseController
     {
         private fashionshopEntities db = new fashionshopEntities();
 
@@ -50,6 +50,7 @@ namespace FashionShop.Areas.Quantri.Controllers
         {
             if (ModelState.IsValid)
             {
+                categoryFrist.alias = ThuVien.convertToUnSign3(categoryFrist.CategoryName);
                 db.categoryFrists.Add(categoryFrist);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +83,7 @@ namespace FashionShop.Areas.Quantri.Controllers
         {
             if (ModelState.IsValid)
             {
+                categoryFrist.alias = ThuVien.convertToUnSign3(categoryFrist.CategoryName);
                 db.Entry(categoryFrist).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
