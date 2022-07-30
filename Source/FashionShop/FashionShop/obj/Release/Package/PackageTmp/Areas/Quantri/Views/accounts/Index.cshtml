@@ -35,9 +35,9 @@
                     @Html.DisplayFor(modelItem => item.timecreate)
                 </td>
                 <td>
-                    @Html.ActionLink("Sửa", "Edit", new { id = item.email }) |
-                    @Html.ActionLink("Xem chi tiết", "Details", new { id = item.email }) |
-                    @Html.ActionLink("Xoá", "Delete", new { id = item.email })
+                    <a href="~/Quantri/accounts/Edit?id=@item.email">Sửa</a> |
+                    <a href="~/Quantri/accounts/Details?id=@item.email">Xem chi tiết</a> |
+                    <a href="~/Quantri/accounts/Delete?id=@item.email">Xoá</a>
                 </td>
             </tr>
         }

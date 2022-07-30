@@ -17,7 +17,12 @@ namespace FashionShop.Areas.Quantri.Controllers
         // GET: Quantri/subImages
         public ActionResult Index(string productID)
         {
-            try {
+            try
+            {
+                if (string.IsNullOrEmpty(productID))
+                {
+                    return Redirect("~/quantri");
+                }
                 var subImages = db.subImages.Where(x => x.productID.Equals(productID)).Include(s => s.Product);
                 return View(subImages.ToList());
             }
@@ -25,7 +30,7 @@ namespace FashionShop.Areas.Quantri.Controllers
             {
                 return Redirect("~/quantri");
             }
-            }
+        }
 
         // GET: Quantri/subImages/Create
         public ActionResult Create()
@@ -53,7 +58,7 @@ namespace FashionShop.Areas.Quantri.Controllers
                     subImage.imgsrc = "/Content/upload/images/" + finalFileName;
                     db.subImages.Add(subImage);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return Redirect("~/quantri/subimages?productID=" + subImage.productID);
                 }
             }
 
@@ -97,7 +102,7 @@ namespace FashionShop.Areas.Quantri.Controllers
                     subImage.imgsrc = "/Content/upload/images/" + finalFileName;
                     db.Entry(subImage).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return Redirect("~/quantri/subimages?productID=" + subImage.productID);
                 }
             }
             ViewBag.productID = new SelectList(db.Products, "productID", "productName", subImage.productID);
@@ -127,7 +132,7 @@ namespace FashionShop.Areas.Quantri.Controllers
             subImage subImage = db.subImages.Find(id);
             db.subImages.Remove(subImage);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Redirect("~/quantri/subimages?productID=" + subImage.productID);
         }
 
         protected override void Dispose(bool disposing)

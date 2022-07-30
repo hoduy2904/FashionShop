@@ -57,7 +57,7 @@ $(document).ready(function () {
 
     $('#btnAddCart').on('click', function (e) {
         e.preventDefault();
-
+        var countCart = $('.btnCart span').text()??0;
         var productID = $('#productID').text();
         var soLuong = $('#txtNumberProduct').val();
         var size = $('#selectSize').val();
@@ -72,7 +72,7 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.status == 200) {
                     Notification("success", data.message)
-                    $('.btnCart span').text(data.count ?? 0)
+                    $('.btnCart span').text(data.count ?? countCart)
                 } else {
                     Notification("error", data.message)
                 }

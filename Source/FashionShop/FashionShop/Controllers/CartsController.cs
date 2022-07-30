@@ -130,7 +130,7 @@ namespace FashionShop.Controllers
                             status = 200,
                             message = "Cập nhật thành công",
                             totalProduct=ThuVien.VietnamDong(giohang.numberProduct*giohang.Product.price),
-                            totalCart=ThuVien.VietnamDong(db.carts.Sum(x=>x.numberProduct*x.Product.price)??0)
+                            totalCart=ThuVien.VietnamDong(db.carts.Where(x=>x.email.Equals(taikhoan.email)).Sum(x=>x.numberProduct*x.Product.price)??0)
                         });
                     }
                     else
@@ -152,7 +152,7 @@ namespace FashionShop.Controllers
                         {
                             status = 200,
                             message = "Thêm vào giỏ hàng thành công",
-                            count=isCartHave.Count()+count
+                            count=db.carts.Where(x=>x.email.Equals(taikhoan.email)).Count()
                         });
                     }
                     else
@@ -212,7 +212,7 @@ namespace FashionShop.Controllers
                                 status = 200,
                                 message = $"Đã Xoá {productID} ra giỏ hàng",
                                 totalMoney =ThuVien.VietnamDong(db.carts.Sum(x => x.numberProduct * x.Product.price)),
-                                count=cart.Count()-1
+                                count= db.carts.Where(x => x.email.Equals(taikhoan.email)).Count()
                             });
                         }
                         else

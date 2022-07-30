@@ -47,6 +47,7 @@ namespace FashionShop.Areas.Quantri.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(order).State = EntityState.Modified;
+                db.Entry(order).Property(x => x.email).IsModified = false;
                 db.Entry(order).Property(x => x.timecreate).IsModified = false;
                 db.SaveChanges();
                 return RedirectToAction("Index");

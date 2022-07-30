@@ -40,7 +40,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.OrderID }) |
-                    @Html.ActionLink("Chi tiết đơn hàng", "Details", "OrderDetails", new { id = item.OrderID }) |
+                    <a href="/quantri/Orderdetails?id=@item.OrderID">Chi tiết đơn hàng</a>|
                     @Html.ActionLink("Xoá", "Delete", new { id = item.OrderID })
                 </td>
             </tr>

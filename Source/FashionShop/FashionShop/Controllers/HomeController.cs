@@ -61,6 +61,15 @@ namespace FashionShop.Controllers
         public ActionResult Navbar()
         {
             var navbar = (db.categoryFrists.ToList());
+            if (Session["account"] != null)
+            {
+                var taikhoan = (account)Session["account"];
+                ViewBag.cartCount = db.carts.Where(x => x.email.Equals(taikhoan.email)).Count();
+            }
+            else
+            {
+                ViewBag.cartCount = 0;
+            }
             return View(navbar);
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FashionShop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,9 +11,18 @@ namespace FashionShop.Areas.Quantri.Controllers
     {
         public BaseController()
         {
-            if (System.Web.HttpContext.Current.Session["account"] == null)
+            var tk = System.Web.HttpContext.Current.Session["account"];
+            if ( tk== null)
             {
-                System.Web.HttpContext.Current.Response.Redirect("~/");
+               
+                System.Web.HttpContext.Current.Response.Redirect("~/login?url=quantri");
+            }
+            else
+            {
+                if (!((account)tk).isAdmin.Value)
+                {
+                    System.Web.HttpContext.Current.Response.Redirect("~/");
+                }
             }
         }
     }

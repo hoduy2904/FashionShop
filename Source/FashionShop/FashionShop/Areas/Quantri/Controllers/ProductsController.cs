@@ -58,7 +58,7 @@ namespace FashionShop.Areas.Quantri.Controllers
             if (ModelState.IsValid)
             {
                 product.price =product.price?? 0;
-                product.priceOld = product.price ?? 0;
+                product.priceOld = product.priceOld ?? 0;
                 product.views = 0;
                 product.alias = ThuVien.convertToUnSign3(product.productName);
                 db.Products.Add(product);
@@ -118,7 +118,7 @@ namespace FashionShop.Areas.Quantri.Controllers
             if (ModelState.IsValid)
             {
                 product.price = product.price ?? 0;
-                product.priceOld = product.price ?? 0;
+                product.priceOld = product.priceOld ?? 0;
                 product.alias=ThuVien.convertToUnSign3(product.productName);
                 db.Entry(product).State = EntityState.Modified;
                 db.Entry(product).Property(x => x.views).IsModified = false;

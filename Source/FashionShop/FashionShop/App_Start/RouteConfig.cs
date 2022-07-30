@@ -21,6 +21,13 @@ namespace FashionShop
             );
 
             routes.MapRoute(
+               name: "Verify",
+               url: "auth/verify",
+               defaults: new { controller = "Auth", action = "Verify", id = UrlParameter.Optional },
+               new[] { "FashionShop.Controllers" }
+           );
+
+            routes.MapRoute(
                name: "Cart",
                url: "giohang/{action}",
                defaults: new { controller = "Carts", action = "Index", id = UrlParameter.Optional },

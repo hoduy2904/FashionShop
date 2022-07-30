@@ -17,5 +17,9 @@ namespace FashionShop
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Session_Start()
+        {
+            Session.Timeout = 30;
+        }
     }
 }

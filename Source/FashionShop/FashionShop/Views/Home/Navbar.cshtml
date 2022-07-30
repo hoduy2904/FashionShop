@@ -14,7 +14,7 @@
             aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">NGUYỄN THUÝ</a>
+    <a class="navbar-brand" href="/">NGUYỄN THUÝ</a>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
         <div class="justify-content-between statusLoginMobile">
             <b>Xin chào: @($"{accounts.hoTen??"Khách"}")</b>
@@ -83,7 +83,7 @@
         @*<button class="btnSearch-mobile"><i class="fa-solid fa-magnifying-glass"></i></button>*@
         <a href="/giohang" class="btnCart">
             <i class="fa-solid fa-cart-shopping"></i>
-            <span>0</span>
+            <span>@ViewBag.cartCount</span>
         </a>
     </div>
 </nav>

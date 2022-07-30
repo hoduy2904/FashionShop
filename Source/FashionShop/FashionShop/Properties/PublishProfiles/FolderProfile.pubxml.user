@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\lamviec\Fashionshop\Source\FashionShop\FashionShop\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2022-07-24T03:44:16.5467569Z;True|2022-07-23T22:06:32.7898609+07:00;True|2022-07-23T13:05:30.8730065+07:00;True|2022-07-23T01:13:42.6396846+07:00;</History>
+    <History>True|2022-07-30T15:53:26.4605911Z;True|2022-07-30T22:39:09.4103625+07:00;True|2022-07-30T22:33:23.3072029+07:00;True|2022-07-29T13:34:11.0706560+07:00;True|2022-07-26T20:19:05.1565310+07:00;True|2022-07-24T10:44:16.5467569+07:00;True|2022-07-23T22:06:32.7898609+07:00;True|2022-07-23T13:05:30.8730065+07:00;True|2022-07-23T01:13:42.6396846+07:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Quantri/Views/accounts/Delete.cshtml">
@@ -15,10 +15,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/23/2022 20:44:37</publishTime>
     </File>
     <File Include="Areas/Quantri/Views/accounts/Edit.cshtml">
-      <publishTime>07/23/2022 20:41:50</publishTime>
+      <publishTime>07/25/2022 10:45:37</publishTime>
     </File>
     <File Include="Areas/Quantri/Views/accounts/Index.cshtml">
-      <publishTime>07/23/2022 21:57:18</publishTime>
+      <publishTime>07/25/2022 10:49:08</publishTime>
     </File>
     <File Include="Areas/Quantri/Views/banners/Create.cshtml">
       <publishTime>07/23/2022 20:31:24</publishTime>
@@ -96,7 +96,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/23/2022 21:19:24</publishTime>
     </File>
     <File Include="Areas/Quantri/Views/Orders/Index.cshtml">
-      <publishTime>07/23/2022 21:58:36</publishTime>
+      <publishTime>07/26/2022 21:16:07</publishTime>
     </File>
     <File Include="Areas/Quantri/Views/Products/Create.cshtml">
       <publishTime>07/24/2022 10:30:28</publishTime>
@@ -111,13 +111,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/24/2022 10:30:41</publishTime>
     </File>
     <File Include="Areas/Quantri/Views/Products/Index.cshtml">
-      <publishTime>07/23/2022 22:00:50</publishTime>
+      <publishTime>07/26/2022 18:26:03</publishTime>
     </File>
     <File Include="Areas/Quantri/Views/Shared/_Layout.cshtml">
-      <publishTime>07/23/2022 22:05:37</publishTime>
+      <publishTime>07/30/2022 22:32:47</publishTime>
     </File>
     <File Include="Areas/Quantri/Views/subImages/Create.cshtml">
-      <publishTime>07/23/2022 20:56:58</publishTime>
+      <publishTime>07/26/2022 18:45:06</publishTime>
     </File>
     <File Include="Areas/Quantri/Views/subImages/Delete.cshtml">
       <publishTime>07/23/2022 20:59:00</publishTime>
@@ -126,7 +126,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/23/2022 20:58:10</publishTime>
     </File>
     <File Include="Areas/Quantri/Views/subImages/Index.cshtml">
-      <publishTime>07/23/2022 21:01:46</publishTime>
+      <publishTime>07/26/2022 18:44:53</publishTime>
     </File>
     <File Include="Areas/Quantri/Views/web.config">
       <publishTime>07/21/2022 18:14:42</publishTime>
@@ -144,10 +144,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/17/2020 03:38:56</publishTime>
     </File>
     <File Include="bin/FashionShop.dll">
-      <publishTime>07/24/2022 10:44:14</publishTime>
+      <publishTime>07/30/2022 22:53:24</publishTime>
     </File>
     <File Include="bin/FashionShop.pdb">
-      <publishTime>07/24/2022 10:44:14</publishTime>
+      <publishTime>07/30/2022 22:53:24</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 16:10:50</publishTime>
@@ -333,7 +333,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/23/2022 19:32:49</publishTime>
     </File>
     <File Include="Content/assets/css/main.css">
-      <publishTime>07/24/2022 10:44:03</publishTime>
+      <publishTime>07/30/2022 22:41:20</publishTime>
     </File>
     <File Include="Content/assets/font/Quicksand/6xKtdSZaM9iE8KbpRA_hJFQNcOM.woff2">
       <publishTime>07/21/2022 16:10:37</publishTime>
@@ -348,7 +348,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/21/2022 16:10:37</publishTime>
     </File>
     <File Include="Content/assets/js/main.js">
-      <publishTime>07/23/2022 17:07:58</publishTime>
+      <publishTime>07/26/2022 21:01:55</publishTime>
     </File>
     <File Include="Content/assets/vendor/bootstrap/css/bootstrap-grid.css">
       <publishTime>07/21/2022 16:05:23</publishTime>
@@ -7851,13 +7851,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/21/2022 16:04:15</publishTime>
     </File>
     <File Include="Views/Auth/Login.cshtml">
-      <publishTime>07/22/2022 16:14:08</publishTime>
+      <publishTime>07/29/2022 13:26:34</publishTime>
     </File>
     <File Include="Views/Auth/Logout.cshtml">
       <publishTime>07/22/2022 16:24:17</publishTime>
     </File>
     <File Include="Views/Auth/Register.cshtml">
-      <publishTime>07/22/2022 16:15:16</publishTime>
+      <publishTime>07/29/2022 13:26:29</publishTime>
     </File>
     <File Include="Views/Carts/Index.cshtml">
       <publishTime>07/23/2022 16:24:51</publishTime>
@@ -7878,10 +7878,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/22/2022 16:42:40</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/22/2022 17:13:11</publishTime>
+      <publishTime>07/30/2022 22:28:33</publishTime>
     </File>
     <File Include="Views/Home/Navbar.cshtml">
-      <publishTime>07/24/2022 10:31:10</publishTime>
+      <publishTime>07/26/2022 20:49:41</publishTime>
     </File>
     <File Include="Views/Home/Search.cshtml">
       <publishTime>07/21/2022 19:31:55</publishTime>
@@ -7899,13 +7899,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/23/2022 17:09:11</publishTime>
     </File>
     <File Include="Views/Product/Index.cshtml">
-      <publishTime>07/22/2022 23:45:59</publishTime>
+      <publishTime>07/30/2022 22:28:48</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>07/21/2022 16:03:59</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/23/2022 00:47:33</publishTime>
+      <publishTime>07/30/2022 22:38:32</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>07/21/2022 16:03:59</publishTime>

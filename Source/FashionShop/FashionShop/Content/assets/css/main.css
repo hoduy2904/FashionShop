@@ -111,12 +111,12 @@ nav{
 }
 .hTitle{
     width:100%;
-    text-align:center;
     color:#424242;
     font-size: 40px;
     font-weight: 700;
 }
-.section-heading a{
+.section-heading a {
+    white-space: nowrap;
     text-decoration: none;
     color: inherit;
 }

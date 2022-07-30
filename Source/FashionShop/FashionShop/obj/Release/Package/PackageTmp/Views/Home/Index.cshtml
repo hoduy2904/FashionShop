@@ -36,7 +36,7 @@
                                 <div class="details-product">
                                     <a href="@($"/{item.alias}/{product.categorySecond1.alias}/{product.alias}")">@product.productName</a>
                                     <div class="price">
-                                        @if (product.priceOld > 0)
+                                        @if (product.priceOld > 0&&product.priceOld>product.price)
                                         {
                                             <span class="price-old">@ThuVien.VietnamDong(product.priceOld)</span>
                                         }
